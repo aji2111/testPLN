@@ -85,8 +85,12 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.cyan,
                         ),
                         onPressed: () {
-                          Get.toNamed(Routes.detail,
-                              arguments: {'isEdit': true, 'id': task.id});
+                          Get.toNamed(Routes.detail, arguments: {
+                            'isEdit': true,
+                            'id': task.id,
+                            'title': task.title,
+                            'userId': task.userId,
+                          });
                         },
                       ),
                       IconButton(
@@ -95,8 +99,11 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.blue,
                         ),
                         onPressed: () {
-                          Get.toNamed(Routes.detail,
-                              arguments: {'isView': true, 'id': task.id});
+                          Get.toNamed(Routes.detail, arguments: {
+                            'isView': true,
+                            'id': task.id,
+                            'title': task.title,
+                          });
                         },
                       ),
                       IconButton(

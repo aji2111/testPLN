@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'movie app',
+      title: 'To do list',
       initialRoute: Routes.home,
       getPages: AppPages.routes,
     );

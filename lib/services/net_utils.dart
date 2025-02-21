@@ -94,6 +94,7 @@ class NetworkUtil {
       throw handleError(e);
     }
   }
+
   Future<dynamic> delete(String path,
       {Map<String, dynamic>? param,
       Map<String, String>? headers,
@@ -120,6 +121,63 @@ class NetworkUtil {
       throw handleError(e);
     }
   }
+
+  Future<dynamic> fetch(String path,
+      {Map<String, dynamic>? body,
+      Map<String, dynamic>? param,
+      Map<String, String>? headers,
+      encoding}) async {
+    Map<String, String> headerJson = {
+      "Accept": "*/*",
+      "Content-Type": "application/json",
+    };
+    if (headers != null) {
+      headerJson.addAll(headers);
+    }
+    try {
+      Response response = await _dio.request(
+        path,
+        queryParameters: param,
+        data: body,
+        options: Options(
+          method: 'FETCH',
+          headers: headerJson,
+        ),
+      );
+      return _returnResponse(response);
+    } catch (e) {
+      print(path);
+      print(headers);
+      throw handleError(e);
+    }
+  }
+  Future<dynamic> patch(String path,
+      {Map<String, dynamic>? body,
+      Map<String, String>? headers,
+      Map<String, String>? param,
+      encoding}) async {
+    Map<String, String> headerJson = {
+      "Accept": "*/*",
+      "Content-Type": "application/json",
+    };
+    if (headers != null) {
+      headerJson.addAll(headers);
+    }
+    try {
+      Response response = await _dio.patch(
+        path,
+        queryParameters: param,
+        data: body,
+        options: Options(
+          headers: headerJson,
+        ),
+      );
+      return _returnResponse(response);
+    } catch (e) {
+      throw handleError(e);
+    }
+  }
+
   dynamic _returnResponse(Response response) {
     switch (response.statusCode) {
       case 200:

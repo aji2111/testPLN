@@ -19,7 +19,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.detail,
-      page: () => const DetailScreen(),
+      page: () => DetailScreen(),
       binding: DetailBindings(),
       arguments: Get.arguments,
     ),
